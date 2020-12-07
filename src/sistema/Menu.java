@@ -1,13 +1,6 @@
 package sistema;
 
 import java.util.Scanner;
-//import java.util.ArrayList;
-
-//import objetos.Colaboradores;
-//import objetos.Orientacoes;
-//import objetos.ProducoesAcademicas;
-//import objetos.Projetos;
-//import objetos.Publicacoes;
 
 public class Menu {
 	
@@ -24,11 +17,11 @@ public class Menu {
 		while(opcao != 0) {
 			System.out.println("O que deseja fazer?\n"
 					+ "0 - Encerrar.\n"
-					+ "1 - Adicionar colaborador.\n" //ok
-					+ "2 - Adicionar projeto.\n" //ok
+					+ "1 - Adicionar colaborador.\n" 
+					+ "2 - Adicionar projeto.\n" 
 					+ "3 - Adicionar publicacao.\n"
 					+ "4 - Adicionar orientação.\n"
-					+ "5 - Imprimir ficha de um aluno.\n" //ok
+					+ "5 - Imprimir ficha de um aluno.\n" 
 					+ "6 - Adicionar colaborar em um projeto.\n"
 					+ "7 - Alterar status do projeto.\n"
 					+ "8 - Imprimir ficha do projeto.\n"

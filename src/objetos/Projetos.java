@@ -31,7 +31,7 @@ public class Projetos {
 		this.descricao = descricao;
 		this.status = "elaboração";
 		participantes[0] = professor;
-		quantidadeDeParticipantes = 0;
+		quantidadeDeParticipantes = 1;
 		for(int i = 0; i < 100; i++) {
 			publicacoes[i] = null;
 			orientacoes[i] = null;
@@ -162,7 +162,7 @@ public class Projetos {
 	}
 
 	public void setPublicacoes(String titulo) {
-		int i = 0;
+		int i = 1;
 		while(publicacoes[i] != null) {
 				i++;
 		}
@@ -175,7 +175,7 @@ public class Projetos {
 	}
 
 	public void setOrientacoes(String titulo) {
-		int i = 0;
+		int i = 1;
 		while(orientacoes[i] != null) {
 				i++;
 		}

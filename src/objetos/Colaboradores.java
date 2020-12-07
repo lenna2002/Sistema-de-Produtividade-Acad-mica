@@ -85,7 +85,7 @@ public class Colaboradores {
 	}
 
 	public void setPublicacoes(String titulo) {
-		int i = 0;
+		int i = 1;
 		while(publicacoes[i] != null) {
 				i++;
 		}
@@ -97,7 +97,7 @@ public class Colaboradores {
 	}
 
 	public void setOrientacoes(String titulo) {
-		int i = 0;
+		int i = 1;
 		while(orientacoes[i] != null) {
 				i++;
 		}

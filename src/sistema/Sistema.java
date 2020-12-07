@@ -51,8 +51,14 @@ public class Sistema {
 	public void imprimirFichaAluno() {
 		int cpf;	
 		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
 		System.out.println("CPF do colaborador:");
 		cpf = input.nextInt();
+		input.nextLine();
 		for(Colaboradores c: colaboradores) {
 			if(cpf == c.getCpf()) {
 				System.out.println("Nome:" + c.getNome());
@@ -67,10 +73,27 @@ public class Sistema {
 			}
 			return;
 		}
+		
+		System.out.println("Colaborador não cadastrado.");
 	}
 		
 	public void atribuirPublicacaoColaborador(String titulo) {
 		int cpf = 0;
+		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
+		if(publicacoesVazio()) {
+			System.out.println("Sem publicações cadastradas.");
+			return;
+		}
 		
 		while(cpf != -1) {
 			System.out.println("CPF do colaborador (Para sair digite -1).");
@@ -87,6 +110,21 @@ public class Sistema {
 	
 	public void atribuirOrientacaoColaborador(String titulo) {
 		int cpf = 0;
+		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
+		if(orientacoesVazio()) {
+			System.out.println("Sem orientações cadastradas.");
+			return;
+		}
 		
 		while(cpf != -1) {
 			System.out.println("CPF do colaborador (Para sair digite -1).");
@@ -112,6 +150,16 @@ public class Sistema {
 	public void imprimirProjetosDoColaborador(Colaboradores c) {
 		int matricula;
 		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
 		for(Projetos p: projetos) {
 			matricula = p.getMatricula();
 			for(int i = 0; i < c.getQuantidadeDeProjetos(); i++) {
@@ -124,6 +172,22 @@ public class Sistema {
 	
 	public void imprimirProducoesDoColaborador(Colaboradores c) {
 		int i = 0;
+		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
+		if(publicacoesVazio() && orientacoesVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
 		String publicacoes[] = c.getPublicacoes();
 		String orientacoes[] = c.getOrientacoes();
 		while(publicacoes[i] != null) {
@@ -137,6 +201,14 @@ public class Sistema {
 		}
 	}
 	
+	public boolean colaboradoresVazio() {
+		if(laboratorio.getColaboradores() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	/************************** PROJETOS **************************/
 	
 	public void addProjetos() {
@@ -144,6 +216,11 @@ public class Sistema {
 		int mesInicio, anoInicio, mesTermino, anoTermino, cpf; //controle = 1, i = 0;
 		double valor;
 		//int participantes[];
+		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
 		
 		System.out.println("Título do projeto:");
 		titulo = input.nextLine();
@@ -183,6 +260,7 @@ public class Sistema {
 					c.setQuantidadeDeProjetos(true);
 					c.addProjeto(ultimaMatricula);
 					System.out.println(ultimaMatricula);
+					return;
 				}
 			}	
 		}	
@@ -211,6 +289,16 @@ public class Sistema {
 	
 	public void addColaboradorEmProjeto() {
 		int cpf, matricula, i, j;
+		
+		if(colaboradoresVazio()) {
+			System.out.println("Sem colaboradores cadastrados.");
+			return;
+		}
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
 		
 		
 		System.out.println("Matrícula do projeto:");
@@ -252,6 +340,11 @@ public class Sistema {
 	
 	public void alterarStatusDoProjeto() {
 		int matricula;
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
 		
 		System.out.println("Matricula do projeto:");
 		matricula = input.nextInt();
@@ -301,20 +394,26 @@ public class Sistema {
 	public void imprimirFichaProjeto() {
 		int matricula;
 		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
 		System.out.println("Matrícula do projeto:");
 		matricula = input.nextInt();
+		input.nextLine();
 		for(Projetos p: projetos) {
 			if(p.getMatricula() == matricula) {
 				System.out.println("Título: " + p.getTitulo());
-				System.out.println("Matrícula: " + p.getTitulo());
-				System.out.println("Data de início do projeto: " + p.getTitulo());
-				System.out.println("Data de término prevista: " + p.getTitulo());
-				System.out.println("Agência financiadora: " + p.getTitulo());
-				System.out.println("Valor do financiamento: " + p.getTitulo());
-				System.out.println("Objetivo do projeto: " + p.getTitulo());
-				System.out.println("Descrição: " + p.getTitulo());
-				System.out.println("Quantidade de participantes: " + p.getTitulo());
-				for(int i = 0; i < p.getQuantidadeDeParticipantes(); i++) {
+				System.out.println("Matrícula: " + p.getMatricula());
+				System.out.println("Data de início do projeto: " + p.getMesInicio() + " " + p.getAnoInicio());
+				System.out.println("Data de término prevista: " + p.getMesTermino() + " " + p.getAnoTermino());
+				System.out.println("Agência financiadora: " + p.getAgencia());
+				System.out.println("Valor do financiamento: " + p.getValor());
+				System.out.println("Objetivo do projeto: " + p.getObjetivo());
+				System.out.println("Descrição: " + p.getDescricao());
+				System.out.println("Quantidade de participantes: " + p.getQuantidadeDeParticipantes());
+				for(int i = 1; i <= p.getQuantidadeDeParticipantes(); i++) {
 					System.out.println(i + " - " + p.getParticipantes(i));
 				}
 				System.out.println("Status do projeto: " + p.getTitulo());
@@ -327,6 +426,7 @@ public class Sistema {
 	
 	public void imprimirProducoesDoProjeto(Projetos p) {
 		int i = 0;
+		
 		String publicacoes[] = p.getPublicacoes();
 		String orientacoes[] = p.getOrientacoes();
 		while(publicacoes[i] != null) {
@@ -338,11 +438,24 @@ public class Sistema {
 		}
 	}
 	
+	public boolean projetosVazio() {
+		if(laboratorio.getNumeroDeProjetos() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	/************************** PRODUÇÕES **************************/
 	
 	public void addPublicacao() {
 		int matricula, mesDePublicacao, anoDePublicacao;
 		String titulo, conferencia;
+		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
 		
 		System.out.println("Qual a matricula do projeto associado?");
 		matricula = input.nextInt();
@@ -383,8 +496,14 @@ public class Sistema {
 		int matricula, cpf;
 		String titulo;
 		
+		if(projetosVazio()) {
+			System.out.println("Sem projetos cadastrados.");
+			return;
+		}
+		
 		System.out.println("Qual a matricula do projeto associado?");
 		matricula = input.nextInt();
+		input.nextLine();
 		for(Projetos c: projetos) {
 			if(c.getMatricula() == matricula) {
 				if(!c.getStatus().equalsIgnoreCase("andamento")) {
@@ -423,6 +542,22 @@ public class Sistema {
 		}
 		return false;
 		
+	}
+	
+	public boolean publicacoesVazio() {
+		if(laboratorio.getNumeroDePublicacoes() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean orientacoesVazio() {
+		if(laboratorio.getNumeroDeOrientacoes() == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/************************** SISTEMA **************************/
