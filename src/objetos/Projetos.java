@@ -10,7 +10,7 @@ public class Projetos {
 	private String objetivo;
 	private String descricao;
 	private int quantidadeDeParticipantes;
-	private int participantes[] = new int[100];			
+	private long participantes[] = new long[100];			
 	private String status;
 	private String publicacoes[] = new String[100];
 	private String orientacoes[] = new String[100];
@@ -18,7 +18,7 @@ public class Projetos {
 	
 	
 	public Projetos(String titulo, int matricula, int mesInicio, int anoInicio, int mesTermino, int anoTermino, String agencia, double valor,
-			String objetivo, String descricao, int professor) {
+			String objetivo, String descricao, long professor) {
 		this.titulo = titulo;
 		this.matricula = matricula;
 		this.mesInicio = mesInicio;
@@ -93,11 +93,11 @@ public class Projetos {
 		this.descricao = descricao;
 	}
 	
-	public int getParticipantes(int i) {
+	public long getParticipantes(int i) {
 		return participantes[i];
 	}
 	
-	public void addParticipantes(int participante) {
+	public void addParticipantes(long participante) {
 		this.participantes[quantidadeDeParticipantes] = participante;
 	}
 	

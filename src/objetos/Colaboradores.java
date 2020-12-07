@@ -2,7 +2,7 @@ package objetos;
 
 public class Colaboradores {
 	private String nome;
-	private int cpf;
+	private long cpf;
 	private String posicao;	
 	private String email;
 	private int quantidadeDeProjetos = 0;
@@ -10,7 +10,7 @@ public class Colaboradores {
 	private String publicacoes[] = new String[100];
 	private String orientacoes[] = new String[100];
 		
-	public Colaboradores(String nome, int cpf, String posicao, String email) {
+	public Colaboradores(String nome, long cpf, String posicao, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.posicao = posicao;
@@ -29,11 +29,11 @@ public class Colaboradores {
 		this.nome = nome;
 	}
 	
-	public int getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 	
-	public void setCpf(int cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 	

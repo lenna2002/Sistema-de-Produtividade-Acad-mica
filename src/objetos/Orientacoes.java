@@ -1,19 +1,19 @@
 package objetos;
 
 public class Orientacoes extends ProducoesAcademicas {
-	private int professor;
+	private long professor;
 	
-	public Orientacoes(String titulo, int matricula, int professor) {
+	public Orientacoes(String titulo, int matricula, long professor) {
 		this.setTitulo(titulo);
 		setProjetoAssociado(matricula);
 		this.professor = professor;
 	}
 
-	public int getProfessor() {
+	public long getProfessor() {
 		return professor;
 	}
 
-	public void setProfessor(int professor) {
+	public void setProfessor(long professor) {
 		this.professor = professor;
 	}
 }

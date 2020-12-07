@@ -25,13 +25,13 @@ public class Sistema {
 	
 	public void addColaboradores() {
 		String nome, posicao, email;
-		int cpf;
+		long cpf;
 		
 		System.out.println("Nome do colaborador:");
 		nome = input.nextLine();
 		
 		System.out.println("CPF do colaborador:");
-		cpf = input.nextInt();
+		cpf = input.nextLong();
 		
 		System.out.println("Posição do colaborador(graduação, mestrado, doutorado, professor, pesquisador:");
 		posicao = input.nextLine();
@@ -49,7 +49,7 @@ public class Sistema {
 	}
 	
 	public void imprimirFichaAluno() {
-		int cpf;	
+		long cpf;	
 		
 		if(colaboradoresVazio()) {
 			System.out.println("Sem colaboradores cadastrados.");
@@ -57,7 +57,7 @@ public class Sistema {
 		}
 		
 		System.out.println("CPF do colaborador:");
-		cpf = input.nextInt();
+		cpf = input.nextLong();
 		input.nextLine();
 		for(Colaboradores c: colaboradores) {
 			if(cpf == c.getCpf()) {
@@ -78,7 +78,7 @@ public class Sistema {
 	}
 		
 	public void atribuirPublicacaoColaborador(String titulo) {
-		int cpf = 0;
+		long cpf = 0;
 		
 		if(colaboradoresVazio()) {
 			System.out.println("Sem colaboradores cadastrados.");
@@ -97,7 +97,7 @@ public class Sistema {
 		
 		while(cpf != -1) {
 			System.out.println("CPF do colaborador (Para sair digite -1).");
-			cpf = input.nextInt();
+			cpf = input.nextLong();
 			for(Colaboradores c: colaboradores) {
 				if(c.getCpf() == cpf) {
 					c.setPublicacoes(titulo);
@@ -109,7 +109,7 @@ public class Sistema {
 	}
 	
 	public void atribuirOrientacaoColaborador(String titulo) {
-		int cpf = 0;
+		long cpf = 0;
 		
 		if(colaboradoresVazio()) {
 			System.out.println("Sem colaboradores cadastrados.");
@@ -128,7 +128,7 @@ public class Sistema {
 		
 		while(cpf != -1) {
 			System.out.println("CPF do colaborador (Para sair digite -1).");
-			cpf = input.nextInt();
+			cpf = input.nextLong();
 			for(Colaboradores c: colaboradores) {
 				if(c.getCpf() == cpf) {
 					c.setPublicacoes(titulo);
@@ -139,7 +139,7 @@ public class Sistema {
 		input.nextLine();
 	}
 	
-	public void atribuirProfessorResponsavel(int cpf, String titulo) {
+	public void atribuirProfessorResponsavel(long cpf, String titulo) {
 		for(Colaboradores c: colaboradores) {
 			if(cpf == c.getCpf()) {
 				c.setOrientacoes(titulo);
@@ -213,9 +213,9 @@ public class Sistema {
 	
 	public void addProjetos() {
 		String titulo, agencia, objetivo, descricao;
-		int mesInicio, anoInicio, mesTermino, anoTermino, cpf; //controle = 1, i = 0;
+		int mesInicio, anoInicio, mesTermino, anoTermino; 
+		long cpf;
 		double valor;
-		//int participantes[];
 		
 		if(colaboradoresVazio()) {
 			System.out.println("Sem colaboradores cadastrados.");
@@ -249,7 +249,7 @@ public class Sistema {
 		
 		
 		System.out.println("CPF do professor responsável:");
-		cpf = input.nextInt();
+		cpf = input.nextLong();
 		input.nextLine();
 		for(Colaboradores c: colaboradores) {
 			if(c.getCpf() == cpf) {
@@ -288,7 +288,8 @@ public class Sistema {
 	}
 	
 	public void addColaboradorEmProjeto() {
-		int cpf, matricula, i, j;
+		long cpf;
+		int matricula, i, j;
 		
 		if(colaboradoresVazio()) {
 			System.out.println("Sem colaboradores cadastrados.");
@@ -318,7 +319,7 @@ public class Sistema {
 		}
 		
 		System.out.println("CPF do colaborador:");
-		cpf = input.nextInt();
+		cpf = input.nextLong();
 		
 		input.nextLine();
 		
@@ -367,7 +368,7 @@ public class Sistema {
 					laboratorio.setProjetosEmAndamento(false);
 					laboratorio.getProjetosConcluidos();
 					for(int i = 0; i < p.getQuantidadeDeParticipantes(); i++) {
-						int cpf = p.getParticipantes(i);
+						long cpf = p.getParticipantes(i);
 						for(Colaboradores c: colaboradores) {
 							if(c.getCpf() == cpf) {
 								c.setQuantidadeDeProjetos(false);
@@ -493,7 +494,8 @@ public class Sistema {
 	}
 	
 	public void addOrientacao() {
-		int matricula, cpf;
+		int matricula;
+		long cpf;
 		String titulo;
 		
 		if(projetosVazio()) {
@@ -513,7 +515,7 @@ public class Sistema {
 				System.out.println("Título da publicação:");
 				titulo = input.nextLine();
 				System.out.println("CPF do professor responsavel.");
-				cpf = input.nextInt();
+				cpf = input.nextLong();
 				atribuirProfessorResponsavel(cpf, titulo);
 				
 				Orientacoes novaOrientacao = new Orientacoes(titulo, matricula, cpf);
